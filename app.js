@@ -54,6 +54,7 @@ function update() {
 
 // Add Function
 function toDoList() {
+    error.innerHTML = "";
   addBtn.addEventListener("click", () => {
     addBtn.innerText = "ADD TASK";
     if (inputField.value === "") {
@@ -69,7 +70,9 @@ function toDoList() {
       li.appendChild(span);
       li.appendChild(img);
       listItems.appendChild(li);
+      error.innerHTML = "";
     }
+    
     inputField.value = "";
     saveData();
   });
