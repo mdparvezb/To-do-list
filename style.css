@@ -13,6 +13,7 @@ body {
 }
 
 .main-container {
+  backdrop-filter: blur(20px);
   width: 400px;
   max-height: 540px;
   box-sizing: content-box;
@@ -28,11 +29,28 @@ body {
   overflow: hidden;
 }
 
+@media screen and (max-width: 400px) {
+  .main-container {
+    box-shadow: none;
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .heading h1 {
   font-size: 24px;
   font-weight: bold;
   padding: 12px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.to-do {
+  width: 22px;
+  height: 22px;
 }
 
 .app {
@@ -86,18 +104,18 @@ body {
   right: 0;
   width: 100px;
   height: 45px;
-  background-color: #e68a00;
+  background-color: rgb(255, 165, 0);
   border-radius: 99px;
   border: none;
   outline: none;
   font-weight: bold;
   font-size: 14px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #addBtn:hover {
   cursor: pointer;
-  background-color: darkblue;
+  background-color: rgb(255, 165, 0, 0.6);
 }
 
 #error {
@@ -131,7 +149,7 @@ body {
   position: relative;
   max-width: 100%;
   background-color: rgb(255, 255, 255, 0.1);
-  padding: 10px 60px 10px 30px;
+  padding: 10px 65px 10px 30px;
   margin: 0 3 px;
   list-style: none;
   border-radius: 50px;
@@ -172,7 +190,7 @@ body {
 }
 
 #list-items li.checked {
-  color: #555;
+  color: rgb(111, 107, 107);
   text-decoration: line-through;
 }
 

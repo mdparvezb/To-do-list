@@ -29,11 +29,8 @@ function taskComplete() {
 
 function update() {
   error.innerHTML = "";
-  addBtn.addEventListener("click", (e) => {
-    if (inputField.value == "") {
-      error.innerHTML = "You must enter something!";
-      saveData();
-    } else {
+  addBtn.addEventListener("click", () => {
+    if (inputField.value !== "") {
       error.innerHTML = "";
       let li = document.createElement("li");
       let span = document.createElement("span");
@@ -44,9 +41,12 @@ function update() {
       li.appendChild(img);
       listItems.appendChild(li);
       return toDoList();
+    } else {
+      toDoList();
+      error.innerHTML = "You must enter something!";
     }
+    addBtn.innerText = "ADD TASK";
     error.innerHTML = "";
-
     inputField.value = "";
     saveData();
   });
