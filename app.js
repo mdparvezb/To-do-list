@@ -3,8 +3,17 @@ const addBtn = document.querySelector("#addBtn");
 const error = document.querySelector("#error");
 const inputField = document.querySelector("#input-field");
 showData();
-toDoList();
 taskComplete();
+error.innerHTML = "";
+
+// Invoke when users clicked on Add Task
+
+addBtn.addEventListener("click", () => {
+  addBtn.innerText = "ADD TASK";
+  error.innerHTML = "";
+  toDoList();
+  saveData();
+});
 
 // Task complete, Update and Delete Function
 function taskComplete() {
@@ -19,63 +28,30 @@ function taskComplete() {
       inputField.value = e.target.parentElement.textContent;
       e.target.parentElement.remove();
       addBtn.innerText = "UPDATE";
-      update();
       saveData();
     }
-  });
-}
-
-// Update Function
-
-function update() {
-  error.innerHTML = "";
-  addBtn.addEventListener("click", () => {
-    if (inputField.value !== "") {
-      error.innerHTML = "";
-      let li = document.createElement("li");
-      let span = document.createElement("span");
-      let img = document.createElement("IMG");
-      let text = document.createTextNode(inputField.value);
-      li.appendChild(text);
-      li.appendChild(span);
-      li.appendChild(img);
-      listItems.appendChild(li);
-      return toDoList();
-    } else {
-      toDoList();
-      error.innerHTML = "You must enter something!";
-    }
-    addBtn.innerText = "ADD TASK";
-    error.innerHTML = "";
-    inputField.value = "";
-    saveData();
   });
 }
 
 // Add Function
 function toDoList() {
+  error.innerHTML = "";
+  if (inputField.value === "") {
+    error.innerHTML = "You must enter something!";
+  } else {
     error.innerHTML = "";
-  addBtn.addEventListener("click", () => {
-    addBtn.innerText = "ADD TASK";
-    if (inputField.value === "") {
-      error.innerHTML = "You must enter something!";
-      saveData();
-    } else {
-      error.innerHTML = "";
-      let li = document.createElement("li");
-      let span = document.createElement("span");
-      let img = document.createElement("IMG");
-      let text = document.createTextNode(inputField.value);
-      li.appendChild(text);
-      li.appendChild(span);
-      li.appendChild(img);
-      listItems.appendChild(li);
-      error.innerHTML = "";
-    }
-    
+    let li = document.createElement("li");
+    let span = document.createElement("span");
+    let img = document.createElement("IMG");
+    let text = document.createTextNode(inputField.value);
+    li.appendChild(text);
+    li.appendChild(span);
+    li.appendChild(img);
+    listItems.appendChild(li);
+    error.innerHTML = "";
     inputField.value = "";
     saveData();
-  });
+  }
 }
 
 // Save Data
